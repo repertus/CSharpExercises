@@ -323,5 +323,157 @@ namespace CSharpExercises
             return string.Join("\r\n", game);
         }
         // If you've finished all these challenges, sign up for CodeWars.com and try to complete a few C# challenges there!
+
+        public static double[] Tribonacci(double[] signature, int n)
+        {
+            double[] trib = new double[n];
+
+            if (n == 0)
+            {
+
+                trib = new double[1] {0} ;
+            }
+            else if (n > 0)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (i < 3)
+                    {
+                        trib[i] = signature[i];
+                    }
+                    if (i > 2)
+                    {
+                        trib[i] = trib[i - 1] + trib[i - 2] + trib[i - 3];
+                    }
+                }
+            }
+
+            return trib;
+        }
+
+        public static int GetSum(int a, int b)
+        {
+            //int[] arrayA = new int[(Math.Abs.a + Math.Abs.b) + 1];
+            //int[] arrayB = new int[(Math.Abs(a) + Math.Abs.b) + 1];
+            int max = Math.Max(a, b);
+            int min = Math.Min(a, b);
+
+            int dif = Math.Abs(max - min) + 1;
+            int[] arraySum = new int[dif];
+            int total;
+
+            if (min != max)
+            {
+                for (int i = 0; i < dif; i++)
+                {
+                    arraySum[i] = min + i;
+                }
+
+                total = arraySum.Sum();
+
+                return arraySum.Sum();
+            }
+            else if (min == max)
+            {
+                return min;
+            }
+
+            return 0;
+        }
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            int[] result = new int[2];
+            int i = 0;
+            int total = 0;
+            int x = 0;
+            bool exitLoop = false;
+            
+            for (i = 0; i < nums.Length-1; i++)
+            {
+                for (x = i+1; x < nums.Length; x ++)
+                {
+                    total = nums[i] + nums[x];
+                    if (total == target)
+                    {
+                        result[0] = i;
+                        result[1] = x;
+                        exitLoop = true;
+                        break;
+                    }
+                }
+
+                if (exitLoop == true)
+                {
+                    break;
+                }    
+            }
+
+            return result;
+        }
+
+        public static int CountBattleships(char[,] board)
+        {
+            int ships = 0;
+            int yLength = board.GetUpperBound(0);
+            int x = 0;
+            int xLength = board.GetUpperBound(1);
+            int y = 0;
+            int xCount = 0;
+
+            for (y = 0; y <= yLength; y++)
+            {
+                for (x = 0; x <= xLength; x++)
+                {
+                    if (board[y, x] == 'X' && xCount == 0 && y == 0)
+                    {
+                        ships++;
+                        xCount++;
+                    }
+                    else if (board[y,x] == 'X' && board[y-1,x] != 'X' && xCount == 0)
+                    {
+                        ships++;
+                        xCount++;
+                    }
+                    else if (board[y,x] == '.')
+                    {
+                        xCount = 0;
+                    }
+                }
+                xCount = 0;
+            }
+
+            return ships;
+        }
+
+        public static int[] SortTheOdd( int[] array)
+        {
+            int i = 0;
+            int remainder = 0;
+            int initialPosition = 0;
+            int holder = 0;
+            
+
+            for (i = array.Length - 1; i >= 0; i--)
+            {
+                Math.DivRem(array[i], 2, out remainder);
+                if (remainder != 0 && array[i] != 0 ) 
+                {
+                    if (initialPosition == 0)
+                    {
+                        initialPosition = i;
+                    }
+                    else if (array[i] > array[initialPosition] )
+                    {
+                        holder = array[i];
+                        array[i] = array[initialPosition];
+                        array[initialPosition] = holder;
+                        i = initialPosition; 
+                    }
+
+                }
+            }
+            return array;
+        }
     }
 }
