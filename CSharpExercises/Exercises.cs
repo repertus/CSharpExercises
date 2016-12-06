@@ -448,31 +448,52 @@ namespace CSharpExercises
 
         public static int[] SortTheOdd( int[] array)
         {
-            int i = 0;
+            int i = array.Length-1;
             int remainder = 0;
-            int initialPosition = 0;
+            int initialOdd = 0;
+            int previousOdd = 0;
             int holder = 0;
-            
 
-            for (i = array.Length - 1; i >= 0; i--)
+            while (i >= 0)
             {
                 Math.DivRem(array[i], 2, out remainder);
-                if (remainder != 0 && array[i] != 0 ) 
+                if (remainder != 0 && array[i] != 0)
                 {
-                    if (initialPosition == 0)
+                    if (initialOdd == 0)
                     {
-                        initialPosition = i;
+                        initialOdd = i;
+                        previousOdd = i;
+                        i--;
                     }
-                    else if (array[i] > array[initialPosition] )
+                    else if (array[i] > array[previousOdd] && i < previousOdd)
                     {
                         holder = array[i];
-                        array[i] = array[initialPosition];
-                        array[initialPosition] = holder;
-                        i = initialPosition; 
+                        array[i] = array[previousOdd];
+                        array[previousOdd] = holder;
+                        previousOdd = initialOdd;
+                        i = initialOdd;
+                        //if (i == 0)
+                        //{
+                        //    i = initialOdd;
+                        //    previousOdd = initialOdd;
+                        //}
                     }
-
+                    else if(array[i] < array[previousOdd])
+                    {
+                        previousOdd = i;
+                        i--;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                else
+                {
+                    i--;
                 }
             }
+
             return array;
         }
     }

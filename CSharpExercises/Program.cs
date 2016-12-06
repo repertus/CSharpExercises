@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,9 +65,10 @@ namespace CSharpExercises
             //Assert("Should run correctly", Exercises.TwoSum(new int[] { 2, 1, 9, 4, 4, 56, 90, 3 }, 8) == new int[] { 3, 4 });
             //Assert("Should run correctly", Exercises.CountBattleships(new char[,] { { 'X', '.', '.', 'X' }, { '.', '.', '.', 'X' }, { '.', '.', '.', 'X' } }) == 2);
             //Assert("Should run correctly", Exercises.CountBattleships(new char[,] { { '.', 'X' }, { 'X', '.' } }) == 2);
-            Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { 5, 3, 2, 8, 1, 4 }) == new int[] { 1, 3, 2, 8, 5, 4 });
-            Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { 5, 3, 1, 8, 0 }) == new int[] { 1, 3, 5, 8, 0 });
-            Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { }) == new int[] { });
+            Assert("SortTheOdd() should sort only odd numbers", Exercises.SortTheOdd(Constants.arrayInput) == Constants.arrayOutput);
+            //Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { 88, 15, 50, 64, 74, 55, 83, 6, 45, 63, 95 }) == new int[] { 88, 15, 50, 64, 74, 45, 55, 6, 63, 83, 95 });
+            //Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { 5, 3, 1, 8, 0 }) == new int[] { 1, 3, 5, 8, 0 });
+            //Assert("Should sort only odd numbers", Exercises.SortTheOdd(new int[] { }) == new int[] { });
 
             /* Prompt user to exit */
             Console.WriteLine("Press any key to exit");
